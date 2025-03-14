@@ -1,0 +1,108 @@
+saber o nome das coisas ajudada a pesquisar conseitos e tambem na entrevista de emprego (conceitos tecnicos)
+
+var (o primeiro tipo que vc colocar sera permanecido o tipo)
+
+dart é Null Safety, salvo no nulo, qualquer variavel em dart nao pode ser nulo.
+? na frente do tipo informa que pode ser nulo.
+
+erro de compilação ( um erro de sintaxe) e erro de execussão
+
+padrão de nomenclatura é a Snackase
+
+class Endereco {
+  String? cidade;
+  String? estado;
+
+  Endereco(String cidade, String estado) {
+    this.cidade = cidade;
+    this.estado = estado;
+  }
+
+  void endereco_dados() {
+    print('Seu estado é $estado');
+    print('Sua cidade é $cidade');
+  }
+}
+
+import 'package:flutter_auau/desafio/Endereco.dart';
+
+class Pessoa {
+  String? nome;
+  int? idade;
+  Endereco? endereco;
+
+  Pessoa(String nome, int idade, Endereco endereco) {
+    this.nome = nome;
+    this.idade = idade;
+    this.endereco = endereco;
+  }
+
+  void imprimir_dados() {
+    endereco?.endereco_dados();
+  }
+}
+
+import 'dart:io';
+import 'Endereco.dart';
+import 'Pessoa.dart';
+
+void main() {
+  String? nome;
+  int? idade;
+  String? cidade;
+  String? estado;
+  String? resposta;
+
+  print('Insira seu nome');
+  resposta = stdin.readLineSync();
+  if (resposta != null) {
+    try {
+      nome = resposta;
+    } catch (e) {
+      print('resposta deve ser uma palavra');
+    }
+  } else {
+    print('resposta nula');
+  }
+
+  print('Insira sua idade');
+  resposta = stdin.readLineSync();
+  if (resposta != null) {
+    try {
+      idade = int.parse(resposta);
+    } catch (e) {
+      print('resposta deve ser um numero');
+    }
+  } else {
+    print('resposta nula');
+  }
+
+  print('Insira sua cidade');
+  resposta = stdin.readLineSync();
+  if (resposta != null) {
+    try {
+      cidade = resposta;
+    } catch (e) {
+      print('resposta deve ser uma palavra');
+    }
+  } else {
+    print('resposta nula');
+  }
+
+  print('Insira sua estado');
+  resposta = stdin.readLineSync();
+  if (resposta != null) {
+    try {
+      estado = resposta;
+    } catch (e) {
+      print('resposta deve ser uma palavra');
+    }
+  } else {
+    print('resposta nula');
+  }
+
+  Endereco endereco = new Endereco(cidade!, estado!);
+  Pessoa pessoa = new Pessoa(nome!, idade!, endereco!);
+
+  pessoa.imprimir_dados();
+}
